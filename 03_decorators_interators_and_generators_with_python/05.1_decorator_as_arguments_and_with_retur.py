@@ -1,4 +1,8 @@
+import functools
+
+
 def my_decorator(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         print("Something is happening before the function is called.")
         result = func(*args, **kwargs)
@@ -16,3 +20,4 @@ def say_hello(name):
 
 hello = say_hello('John')
 print(hello)
+print(say_hello.__name__)
